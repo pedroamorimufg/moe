@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,33 +8,26 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
  
-    <title>Entrar no MOE</title>
+    <title>Bem vindo</title>
   </head>
   <body>
     <div class="container">
         <div class="row justify-content-md-center">
  
             <div class="col-6">
-                <h1>Entrar no MOE</h1>
-                <?php if(session()->getFlashdata('msg')):?>
-                    <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
-                <?php endif;?>
-                <form action="/login/auth" method="post">
-                    <div class="mb-3">
-                        <label for="InputForEmail" class="form-label">E-mail</label>
-                        <input type="email" name="email" class="form-control" id="InputForEmail" value="<?= set_value('email') ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="InputForPassword" class="form-label">Senha</label>
-                        <input type="password" name="senha" class="form-control" id="InputForPassword">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
+
+
+
+            <?php if (session()->get('tipo')==='1'): ?>
+                <h2>Bem vindo <?php echo session()->get('est_nome') ?></h2>
+                <?php else: ?>
+                <h2>Bem vindo <?php echo session()->get('empresa_nome') ?></h2>
+                <?php endif;?> 
+            <a class="btn btn-secondary mt-3" href="<?php echo site_url('login/logout');?>">Sair</a>           
             </div>
-             
         </div>
     </div>
-
+     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"

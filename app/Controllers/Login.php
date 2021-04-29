@@ -20,22 +20,30 @@ class Login extends Controller
         $data = $model->where('email', $email)->first();
         if($data){
             $pass = $data['senha'];
-            //$verify_pass = password_verify($password, $pass);
             
             if($pass == md5($password)){
                 $ses_data = [
                     'id'       => $data['id'],
                     'email'    => $data['email'],
+                    'tipo'      => $data['tipo'],
+                    'est_nome'      => $data['est_nome'],
+                    'est_curso'      => $data['est_curso'],
+                    'est_ano'      => $data['est_ano'],
+                    'est_curriculo'      => $data['est_curriculo'],
+                    'empresa_nome'      => $data['empresa_nome'],
+                    'empresa_endereco'      => $data['empresa_endereco'],
+                    'empresa_contato'      => $data['empresa_contato'],
+                    'empresa_descricao'      => $data['empresa_descricao'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
                 return redirect()->to('/dashboard');
             }else{
-                $session->setFlashdata('msg', 'Wrong Password');
+                $session->setFlashdata('msg', 'Senha inválida');
                 return redirect()->to('/login');
             }
         }else{
-            $session->setFlashdata('msg', 'Email not Found');
+            $session->setFlashdata('msg', 'E-mail nao encontrado');
             return redirect()->to('/login');
         }
     }
