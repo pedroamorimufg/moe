@@ -1,4 +1,4 @@
-# PPGCC 2021/1 - Engenharia de Software
+# PPGCC 2021/1 - Engenharia de Software (INF/UFG)
 
 ## Mural de Oportunidades de Estágio (MOE)
 
